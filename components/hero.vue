@@ -4,7 +4,7 @@
       <div class="text-center pb-12 md:pb-16">
         <h1 class="z-20 text-6xl md:text-8xl font-extrabold leading-tighter tracking-tighter mb-4 aos-init aos-animate text-slate-100">
           Haz una paella
-            <div class="mt-4 text-3xl flex flex-wrap gap-0 md:gap-4 items-center justify-center">
+            <div class="mt-4 flex flex-wrap gap-0 md:gap-4 items-center justify-center">
                 <span :class="{'opacity-20' : index !== 0}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Buena.</span>
                 <span :class="{'opacity-20' : index !== 1}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Fácil.</span>
                 <span :class="{'opacity-20' : index !== 2}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Exacta.</span>
