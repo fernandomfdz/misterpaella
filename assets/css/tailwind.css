@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    background-image: url('https://4kwallpapers.com/images/wallpapers/spheres-6000x4000-11076.jpg');
+    background-repeat: true;
+}
