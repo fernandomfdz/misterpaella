@@ -5,8 +5,8 @@
   <!-- Put this part before </body> tag -->
   <input type="checkbox" id="my-modal" class="modal-toggle" />
   <div class="modal">
-    <div class="modal-box h-screen flex flex-col gap-8">
-      <div class="flex flex-col justify-between h-screen">
+    <div class="modal-box flex flex-col gap-8">
+      <div class="flex flex-col justify-between">
         <div class="flex flex-col gap-8">
           <h2 class="font-bold text-lg">¿Cuantas personas sois?</h2>
           <h3>{{ people }}</h3>
