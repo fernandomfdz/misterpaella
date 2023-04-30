@@ -16,11 +16,7 @@
           </p>
           <div class="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center aos-init aos-animate">
             <div>
-              <a
-                class="btn"
-                href="#0"
-                >Comenzar</a
-              >
+              <calculator/>
             </div>
           </div>
           
@@ -31,7 +27,9 @@
 </template>
 <script>
 import {ref} from 'vue';
+import calculator from './calculator.vue';
 export default {
+  components: { calculator },
     setup() {
         const index = ref(0);
 
