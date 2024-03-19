@@ -1,45 +1,6 @@
 <template>
-    <div class="relative w-40 h-40">
-  <svg class="w-full h-full" viewBox="0 0 100 100">
-    <!-- Background circle -->
-    <circle
-      class="text-background stroke-current"
-      stroke-width="3"
-      
-      cx="50"
-      cy="50"
-      r="40"
-      fill="transparent"
-    ></circle>
-    <!-- Progress circle -->
-    <circle
-      class="text-foreground  progress-ring__circle stroke-current"
-      stroke-width="3"
-      stroke-linecap="round"
-      cx="50"
-      cy="50"
-      r="40"
-      fill="transparent"
-      stroke-dashoffset="calc(500 - (500 * 45) / 100)"
-    ></circle>
-    
-    <!-- Center text -->
-    <text x="50" y="50" font-family="Verdana" class="fill-foreground" font-size="12" text-anchor="middle" alignment-baseline="middle">70%</text>
-
-  </svg>
-</div>
-  <div>
-    <span class="progress-bar-seconds">{{ seconds }} Seconds left ...</span>
-  </div>
+  <div class="text-foreground">{{ format(seconds) }}</div>
 </template>
-<style scoped>
-.progress-ring__circle {
-  stroke-dasharray: 400, 400;
-  transition: stroke-dashoffset 0.35s;
-  transform: rotate(-90deg);
-  transform-origin: 50% 50%;
-}
-</style>
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
 
@@ -69,8 +30,26 @@ export default {
 
     onUnmounted(() => clearInterval(_timerId));
 
+    function format(time) {
+      // Hours, minutes and seconds
+      var hrs = ~~(time / 3600);
+      var mins = ~~((time % 3600) / 60);
+      var secs = ~~time % 60;
+
+      // Output like "1:01" or "4:03:59" or "123:03:59"
+      var ret = "";
+      if (hrs > 0) {
+          ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
+      }
+      ret += "" + String(mins).padStart(2, '0') + ":" + (secs < 10 ? "0" : "");
+      ret += "" + secs;
+      return ret;
+    }
+
+
     return {
       seconds,
+      format
     };
   },
 };

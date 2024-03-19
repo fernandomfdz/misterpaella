@@ -22,9 +22,10 @@
             </div>
             <Label :for="innerSteps[currentPosition].name" class="flex gap-4 items-center p-2 w-full cursor-pointer">
                 <div class="flex flex-col gap-4 w-full items-start justify-center">
-                <span class="text-lg text-foreground">{{ innerSteps[currentPosition].name }}</span>
-                <span class="opacity-60">{{ innerSteps[currentPosition].description }}</span>
+                    <span class="text-lg text-foreground">{{ innerSteps[currentPosition].name }}</span>
+                    <span class="opacity-60">{{ innerSteps[currentPosition].description }}</span>
                 </div>
+                <Timer v-if="innerSteps[currentPosition].timer" :value="innerSteps[currentPosition].timer*10*6"></Timer>
             </Label>
         </div>
     </div>
@@ -42,7 +43,7 @@
             </Label>
         </div>
     </div>
-
+    <Button @click="onNextStep">Siguiente</Button>
 </div>
 </template>
 <script setup lang="ts">

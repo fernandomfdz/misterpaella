@@ -70,7 +70,7 @@ import {ref, computed} from 'vue'
     {
     dialogTitle: 'Vamos a cocinar',
     id:'cook',
-    showBack: false,
+    showBack: true,
     showContinue: false,
   }
 ]);
