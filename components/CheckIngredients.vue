@@ -25,6 +25,12 @@
     const selectedIngredients = ref([]);
     watch(() => props.ingredients, (newValue, oldValue) => innerIngredients.value = props.ingredients);
 
+    onBeforeUnmount(() => {
+        selectedIngredients.value = [];
+        innerIngredients.value.forEach(i => i.checked = false);
+        emit('change', selectedIngredients.value);
+    })
+
     function onCheck(item: any, event: any) {
         item.checked = event;
         selectedIngredients.value = innerIngredients.value.filter((i:any) => i.checked);

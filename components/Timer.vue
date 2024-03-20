@@ -12,21 +12,33 @@ export default {
       required: true,
     },
   },
-  setup(props) {
+  emits: ['end'],
+  setup(props, {emit}) {
     const seconds = ref(0);
     let _timerId = null;
 
     onMounted(() => {
+      onValueChange();
+    });
+
+    watch(() => props.value, onValueChange);
+
+    function onValueChange() {
+      clearInterval(_timerId);
       seconds.value = props.value;
       if (seconds.value > 0) {
         _timerId = setInterval(() => {
+          if(seconds.value === 12) {
+
+          }
           seconds.value--;
           if (seconds.value <= 0) {
+            emit('end')
             clearInterval(_timerId);
           }
         }, 1000);
       }
-    });
+    }
 
     onUnmounted(() => clearInterval(_timerId));
 
