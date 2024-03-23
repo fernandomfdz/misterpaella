@@ -5,7 +5,7 @@
         Comenzar
       </Button>
     </DialogTrigger>
-    <DialogScrollContent class="gap-11 w-full my-0 h-full md:my-2 md:h-auto">
+    <DialogScrollContent class="gap-11 w-full my-4 h-full md:my-2 md:h-auto border-transparent md:border-border">
       <DialogHeader class="gap-9 h-full">
         <DialogTitle>{{ currentStep.dialogTitle }}</DialogTitle>
         <Progress v-if="currentStep.id === 'ingredients'" class="h-[2px]" :model-value="(checkedIngredients.length / ingredients.length)*100" />
@@ -70,14 +70,14 @@ import {ref, computed} from 'vue'
   import { Switch } from '@/components/ui/switch'
   import { Label } from '@/components/ui/label'
 
-  const steps = ref([{
+  const steps = computed( () => [{
     dialogTitle: '¿Cuantas personas sois?',
     id:'people',
     showBack: false,
     showContinue: true,
   },
   {
-    dialogTitle: 'Reúne los ingredientes',
+    dialogTitle: 'Reúne los ingredientes (' + sliderValue.value[0] + ' personas)',
     id:'ingredients',
     showBack: true,
     showContinue: true,
@@ -193,6 +193,14 @@ import {ref, computed} from 'vue'
     quantity: people.value * tomilloPorPersona,
     quantityPerPerson: tomilloPorPersona,
     measure: 'unidad'
+  },
+  {
+    img: '',
+    name: 'Pimiento Choricero',
+    description: 'Opcional pero recomendado',
+    quantity: people.value * pimientoChoricero,
+    quantityPerPerson: pimientoChoricero,
+    measure: 'gr'
   }
     ];
   });
@@ -244,9 +252,13 @@ import {ref, computed} from 'vue'
       name: 'Añade el agua',
       description: ''
     },
+        {
+      name: 'Añade el Pimiento Choricero',
+      description: 'Mezcla bien'
+    },
     {
       name: 'Añade el resto de sal y colorante',
-      description: ''
+      description: 'Mezcla bien'
     },
     {
       name: 'Sube el fuego y que hierva el agua',
@@ -337,7 +349,7 @@ import {ref, computed} from 'vue'
   const arrozPorPersona = 100;
   const salPorPersona = 5;
   const aguaPorPersona = 400;
-  const tomatePorPersona = 100;
+  const tomatePorPersona = 40;
   const trozosDeCarnePorPersona = 4;
   const trozosDePimientoRojoPorPersona = 3;
   const trozosDeAjoPorPersona = 1;
@@ -348,4 +360,5 @@ import {ref, computed} from 'vue'
   const vinoBlancoPorPersona = 30;
   const colorantePorPersona = 3;
   const tomilloPorPersona = 1;
+  const pimientoChoricero = 5;
 </script>

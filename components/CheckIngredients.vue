@@ -9,10 +9,13 @@
         <div class="flex flex-col w-full items-start justify-center">
             <span class="text-sm text-foreground">{{ ingredient.name }}</span>
             <span class="text-xs opacity-60">{{ ingredient.description }}</span>
+            <span class="text-xs opacity-60">{{ingredient.quantityPerPerson}} {{ ingredient.measure }} / persona</span>
         </div>
-        <div class="flex gap-1 text-foreground">
-            <span>{{ingredient.quantity}}</span>
-            <span>{{ ingredient.measure }}</span>
+        <div class="flex flex-col gap-2 items-end justify-center w-fit">
+            <div class="flex gap-1 text-foreground">
+                <span>{{ingredient.quantity}}</span>
+                <span>{{ ingredient.measure }}</span>
+            </div>
         </div>
     </Label>
 </div>
