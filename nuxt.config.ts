@@ -1,11 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@nuxtjs/tailwindcss','@pinia/nuxt','shadcn-nuxt'],
-  plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
+  plugins: [{ src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }],
   devtools: {
     timeline: {
       enabled: true
     }
+  },
+  nitro: {
+      preset: "cloudflare-pages",
+      prerender: {
+          autoSubfolderIndex: false
+      }
   },
   shadcn: {
     /**

@@ -2,13 +2,10 @@ const animate = require("tailwindcss-animate");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
-  content: [
-    "./pages/**/*.{ts,tsx,vue}",
-    "./components/**/*.{ts,tsx,vue}",
-    "./app/**/*.{ts,tsx,vue}",
-    "./src/**/*.{ts,tsx,vue}",
-  ],
+  darkMode: ["selector"],
+  safelist: ["dark"],
+  prefix: "",
+
   theme: {
     container: {
       center: true,
@@ -18,6 +15,47 @@ module.exports = {
       },
     },
     extend: {
+      colors: {
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "hsl(var(--background))",
+        foreground: "hsl(var(--foreground))",
+        primary: {
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
+        },
+        secondary: {
+          DEFAULT: "hsl(var(--secondary))",
+          foreground: "hsl(var(--secondary-foreground))",
+        },
+        destructive: {
+          DEFAULT: "hsl(var(--destructive))",
+          foreground: "hsl(var(--destructive-foreground))",
+        },
+        muted: {
+          DEFAULT: "hsl(var(--muted))",
+          foreground: "hsl(var(--muted-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
+        popover: {
+          DEFAULT: "hsl(var(--popover))",
+          foreground: "hsl(var(--popover-foreground))",
+        },
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      borderRadius: {
+        xl: "calc(var(--radius) + 4px)",
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
       keyframes: {
         "accordion-down": {
           from: { height: 0 },
@@ -27,33 +65,32 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: 0 },
         },
+        "collapsible-down": {
+          from: { height: 0 },
+          to: { height: "var(--radix-collapsible-content-height)" },
+        },
+        "collapsible-up": {
+          from: { height: "var(--radix-collapsible-content-height)" },
+          to: { height: 0 },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-      },
-      colors: {
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        muted: "hsl(var(--muted))",
-        "muted-foreground": "hsl(var(--muted-foreground))",
-        popover: "hsl(var(--popover))",
-        "popover-foreground": "hsl(var(--popover-foreground))",
-        card: "hsl(var(--card))",
-        "card-foreground": "hsl(var(--card-foreground))",
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        primary: "hsl(var(--primary))",
-        "primary-foreground": "hsl(var(--primary-foreground))",
-        secondary: "hsl(var(--secondary))",
-        "secondary-foreground": "hsl(var(--secondary-foreground))",
-        accent: "hsl(var(--accent))",
-        "accent-foreground": "hsl(var(--accent-foreground))",
-        destructive: "hsl(var(--destructive))",
-        "destructive-foreground": "hsl(var(--destructive-foreground))",
-        ring: "hsl(var(--ring))",
+        "collapsible-down": "collapsible-down 0.2s ease-in-out",
+        "collapsible-up": "collapsible-up 0.2s ease-in-out",
       },
     },
   },
-  plugins: [animate],
+  plugins: [animate, require("daisyui")],
+  daisyui: {
+    themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
+    darkTheme: "light", // name of one of the included themes for dark mode
+    base: false, // applies background color and foreground color for root element by default
+    styled: true, // include daisyUI colors and design decisions for all components
+    utils: true, // adds responsive and modifier utility classes
+    prefix: "", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
+    logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
+    themeRoot: "", // The element that receives theme color CSS variables
+  },
 };

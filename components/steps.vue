@@ -1,59 +1,62 @@
 <template>
-  <Dialog @update:open="onOpenChange">
-    <DialogTrigger as-child>
-      <Button>
-        Comenzar
-      </Button>
-    </DialogTrigger>
-    <DialogScrollContent class="gap-11 w-full my-4 h-full md:my-2 md:h-auto border-transparent md:border-border">
-      <DialogHeader class="gap-9 h-full">
-        <DialogTitle>{{ currentStep.dialogTitle }}</DialogTitle>
-        <Progress v-if="currentStep.id === 'ingredients'" class="h-[2px]" :model-value="(checkedIngredients.length / ingredients.length)*100" />
-        <DialogDescription>
-          <div class="flex flex-col gap-9">
-            <div v-if="currentStep.id === 'people'" class="flex flex-col gap-4">
-              <h3>Somos {{ people }} personas</h3>
-              <Slider v-model="sliderValue" :max="25" :min="2" :step="1"/>
-            </div>
-            <div v-if="currentStep.id==='ingredients'" class="flex flex-col gap-6">
-              <CheckIngredients :ingredients="ingredients" @change="checkedIngredients = $event"/>
-            </div>
-            <div v-if="currentStep.id==='cook'" class="flex flex-col gap-6">
-              <CookSteps :steps="cookSteps" :position="cookPosition" @next="onNextStepCook"></CookSteps>
-            </div>
-            <div v-if="currentStep.id==='finish'" class="flex flex-col gap-6">
-              <ClientOnly>
-                   <Vue3Lottie
-                      :animationData="confetti.default"
-                      :loop="false"
-                    />
-              </ClientOnly>
-            </div>
-          </div>
-        </DialogDescription>
-      </DialogHeader>
-      <DialogFooter class="gap-2">
-        <Button v-if="currentStep.id !=='cook' || (currentStep.id ==='cook' && cookPosition === 0)" @click="onPreviousStep" variant="outline">
-          Volver
+  <ClientOnly>
+    <Dialog @update:open="onOpenChange">
+      <DialogTrigger as-child>
+        <Button>
+          Comenzar
         </Button>
-        <Button v-if="currentStep.id ==='cook' && cookPosition > 0" @click="onPreviousStepCook" variant="outline">
-          Volver
-        </Button>
-        <Button v-if="currentStep.showContinue && currentStep.id !=='cook'" @click="onNextStep">
-          Continuar
-        </Button>
-        <Button v-if="currentStep.id ==='cook' && cookPosition < cookSteps.length" @click="onNextStepCook">
-          Continuar
-        </Button>
-      </DialogFooter>
-    </DialogScrollContent>
-  </Dialog>
+      </DialogTrigger>
+      <DialogScrollContent class="gap-11 w-full my-4 h-full md:my-2 md:h-auto border-transparent md:border-border">
+        <DialogHeader class="gap-9 h-full">
+          <DialogTitle>{{ currentStep.dialogTitle }}</DialogTitle>
+          <Progress v-if="currentStep.id === 'ingredients'" class="h-[2px]" :model-value="(checkedIngredients.length / ingredients.length)*100" />
+          <DialogDescription>
+            <div class="flex flex-col gap-9">
+              <div v-if="currentStep.id === 'people'" class="flex flex-col gap-4">
+                <h3>Somos {{ people }} personas</h3>
+                <Slider v-model="sliderValue" :max="25" :min="2" :step="1"/>
+              </div>
+              <div v-if="currentStep.id==='ingredients'" class="flex flex-col gap-6">
+                <CheckIngredients :ingredients="ingredients" @change="checkedIngredients = $event"/>
+              </div>
+              <div v-if="currentStep.id==='cook'" class="flex flex-col gap-6">
+                <CookSteps :steps="cookSteps" :position="cookPosition" @next="onNextStepCook"></CookSteps>
+              </div>
+              <div v-if="currentStep.id==='finish'" class="flex flex-col gap-6">
+                <ClientOnly>
+                     <Vue3Lottie
+                        :animationData="confetti.default"
+                        :loop="false"
+                      />
+                </ClientOnly>
+              </div>
+            </div>
+          </DialogDescription>
+        </DialogHeader>
+        <DialogFooter class="gap-2">
+          <Button v-if="currentStep.id !=='cook' || (currentStep.id ==='cook' && cookPosition === 0)" @click="onPreviousStep" variant="outline">
+            Volver
+          </Button>
+          <Button v-if="currentStep.id ==='cook' && cookPosition > 0" @click="onPreviousStepCook" variant="outline">
+            Volver
+          </Button>
+          <Button v-if="currentStep.showContinue && currentStep.id !=='cook'" @click="onNextStep">
+            Continuar
+          </Button>
+          <Button v-if="currentStep.id ==='cook' && cookPosition < cookSteps.length" @click="onNextStepCook">
+            Continuar
+          </Button>
+        </DialogFooter>
+      </DialogScrollContent>
+    </Dialog>
+  </ClientOnly>
 </template>
 <script setup>
 import {ref, computed} from 'vue'
   import { usePaellaStore } from "@/stores/paella";
   import { storeToRefs } from "pinia";
   import * as confetti from "~/assets/confetti.json";
+  import { Vue3Lottie } from 'vue3-lottie'
   import {
     Dialog,
     DialogScrollContent,
@@ -69,6 +72,9 @@ import {ref, computed} from 'vue'
   import { Checkbox } from '@/components/ui/checkbox'
   import { Switch } from '@/components/ui/switch'
   import { Label } from '@/components/ui/label'
+  import { useWakeLock } from '@vueuse/core'
+
+  const { isSupported, isActive, request, release } = useWakeLock()
 
   const steps = computed( () => [{
     dialogTitle: '¿Cuantas personas sois?',
@@ -339,10 +345,22 @@ import {ref, computed} from 'vue'
   const sliderValue = ref([2]);
 
   function onOpenChange(opened) {
-    if(opened) {
+    if (opened) {
       sliderValue.value = [2];
       cookPosition.value = 0;
       currentStepIndex.value = 0;
+
+      if (isSupported.value) {
+        if (!isActive.value) {
+          request('screen')
+        }
+      }
+    } else { 
+      if (isSupported.value) {
+        if (isActive.value) {
+          release()
+        }
+      }
     }
   }
 

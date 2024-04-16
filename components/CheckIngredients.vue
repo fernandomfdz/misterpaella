@@ -30,7 +30,7 @@
 
     onBeforeUnmount(() => {
         selectedIngredients.value = [];
-        innerIngredients.value.forEach(i => i.checked = false);
+        innerIngredients.value.forEach((i: any) => i.checked = false);
         emit('change', selectedIngredients.value);
     })
 
