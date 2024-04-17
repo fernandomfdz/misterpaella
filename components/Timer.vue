@@ -1,8 +1,13 @@
 <template>
-  <div class="text-foreground">{{ format(seconds) }}</div>
+  <ClientOnly>
+    <div class="text-foreground">{{ format(seconds) }}</div>
+  </ClientOnly>
 </template>
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
+
+import timerSound from "~/assets/sound/timer.mp3";
+
 
 export default {
   props: {
@@ -21,6 +26,10 @@ export default {
       onValueChange();
     });
 
+    if (process.client) {
+        var audio = new Audio(timerSound);
+    }
+
     watch(() => props.value, onValueChange);
 
     function onValueChange() {
@@ -28,12 +37,11 @@ export default {
       seconds.value = props.value;
       if (seconds.value > 0) {
         _timerId = setInterval(() => {
-          if(seconds.value === 12) {
-
+          if(seconds.value === 15) {
+            audio.play();
           }
           seconds.value--;
           if (seconds.value <= 0) {
-            emit('end')
             clearInterval(_timerId);
           }
         }, 1000);

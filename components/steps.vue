@@ -72,7 +72,7 @@ import {ref, computed} from 'vue'
   import { Checkbox } from '@/components/ui/checkbox'
   import { Switch } from '@/components/ui/switch'
   import { Label } from '@/components/ui/label'
-  import { useWakeLock } from '@vueuse/core'
+  import { useWakeLock } from '@vueuse/core';
 
   const { isSupported, isActive, request, release } = useWakeLock()
 
@@ -214,7 +214,7 @@ import {ref, computed} from 'vue'
   const cookSteps = ref([
     {
       name: 'Enciende el fuego',
-      description: 'Usa leña y dale caña, cuando lo veas caliente añade aceite'
+      description: 'Usa leña y dale caña, cuando lo veas caliente añade aceite',
     },
     {
       name: 'Fríe la carne',
