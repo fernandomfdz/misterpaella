@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/tailwindcss','@pinia/nuxt','shadcn-nuxt'],
+  modules: ['@nuxtjs/tailwindcss','@pinia/nuxt','shadcn-nuxt','@nuxtjs/supabase'],
   plugins: [{ src: '~/plugins/Vue3Lottie.client.ts', mode: 'client' }],
   devtools: {
     timeline: {
@@ -23,5 +23,15 @@ export default defineNuxtConfig({
      * @default "./components/ui"
      */
     componentDir: './components/ui'
+  },
+
+  supabase: {
+      redirectOptions: {
+        login: '/login',
+        callback: '/confirm',
+        include: ['/app/*'],
+        exclude: ['/profile/*'],
+        cookieRedirect: true,
+      }
   }
 })
