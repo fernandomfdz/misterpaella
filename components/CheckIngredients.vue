@@ -5,7 +5,9 @@
 <div class="flex gap-4 w-full items-center" v-for="ingredient in innerIngredients" :key="ingredient.name" >
     <Checkbox :id="ingredient.name" :checked="ingredient.checked" @update:checked="onCheck(ingredient, $event)"/>
     <Label :for="ingredient.name" class="flex gap-4 items-center p-2 w-full cursor-pointer" :class="{'line-through opacity-45': ingredient.checked}">
-        <div class="size-5 p-4 rounded-full bg-border"></div>
+        <div class="size-5 p-4 rounded-full bg-border flex items-center justify-center">
+            <div v-html="ingredient.img"></div>
+        </div>
         <div class="flex flex-col w-full items-start justify-center">
             <span class="text-sm text-foreground">{{ ingredient.name }}</span>
             <span class="text-xs opacity-60">{{ ingredient.description }}</span>

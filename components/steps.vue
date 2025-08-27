@@ -105,7 +105,7 @@ import {ref, computed} from 'vue'
   const ingredients = computed(() => {
     return [
       {
-    img: '',
+    img: '🍚',
     name: 'Arroz',
     description: 'Bomba',
     quantity: people.value * arrozPorPersona,
@@ -113,7 +113,7 @@ import {ref, computed} from 'vue'
     measure: 'gr'
   },
   {
-    img: '',
+    img: '🧂',
     name: 'Sal',
     description: '',
     quantity: people.value * salPorPersona,
@@ -121,7 +121,7 @@ import {ref, computed} from 'vue'
     measure: 'gr'
   },
   {
-    img: '',
+    img: '🚰',
     name: 'Agua',
     description: '',
     quantity: people.value * aguaPorPersona,
@@ -129,7 +129,7 @@ import {ref, computed} from 'vue'
     measure: 'ml'
   },
   {
-    img: '',
+    img: '🥫',
     name: 'Tomate frito',
     description: 'Hida',
     quantity: people.value * tomatePorPersona,
@@ -137,7 +137,7 @@ import {ref, computed} from 'vue'
     measure: 'ml'
   },
   {
-    img: '',
+    img: '🍖',
     name: 'Trozos de carne',
     description: 'De pollo / conejo',
     quantity: people.value * trozosDeCarnePorPersona,
@@ -145,7 +145,7 @@ import {ref, computed} from 'vue'
     measure: 'unidad'
   },
   {
-    img: '',
+    img: '🫑',
     name: 'Trozos de pimiento rojo',
     description: 'En juliana',
     quantity: people.value * trozosDePimientoRojoPorPersona,
@@ -153,7 +153,7 @@ import {ref, computed} from 'vue'
     measure: 'unidad'
   },
   {
-    img: '',
+    img: '🧄',
     name: 'Dientes de ajo',
     description: 'Cortados en trozos',
     quantity: people.value * trozosDeAjoPorPersona,
@@ -161,7 +161,7 @@ import {ref, computed} from 'vue'
     measure: 'unidad'
   },
   {
-    img: '',
+    img: '🧅',
     name: 'Cebolla',
     description: 'Picada fina',
     quantity: people.value * cebollaPorPersona,
@@ -169,7 +169,7 @@ import {ref, computed} from 'vue'
     measure: 'gr'
   },
   {
-    img: '',
+    img: '🍲',
     name: 'Avecrem',
     description: '',
     quantity: people.value * avecremPorPersona,
@@ -177,7 +177,7 @@ import {ref, computed} from 'vue'
     measure: 'gr'
   },
   {
-    img: '',
+    img: '🍷',
     name: 'Vino Blanco',
     description: 'Cualquiera sirve',
     quantity: people.value * vinoBlancoPorPersona,
@@ -185,7 +185,7 @@ import {ref, computed} from 'vue'
     measure: 'ml'
   },
   {
-    img: '',
+    img: '🎨',
     name: 'Colorante',
     description: '',
     quantity: people.value * colorantePorPersona,
@@ -193,7 +193,7 @@ import {ref, computed} from 'vue'
     measure: 'gr'
   },
   {
-    img: '',
+    img: '🪴',
     name: 'Tomillo',
     description: 'En rama',
     quantity: people.value * tomilloPorPersona,
@@ -201,7 +201,7 @@ import {ref, computed} from 'vue'
     measure: 'unidad'
   },
   {
-    img: '',
+    img: '🌶️',
     name: 'Pimiento Choricero',
     description: 'Opcional pero recomendado',
     quantity: people.value * pimientoChoricero,

@@ -2,17 +2,17 @@
   <div class="max-w-6xl mx-auto px-4 sm:px-6">
     <div class="pt-6 pb-12 md:pt-40 md:pb-20">
       <div class="text-center pb-12 md:pb-16">
-        <h1 class="z-20 text-8xl font-extrabold leading-tighter tracking-tighter mb-4 aos-init aos-animate">Mister Paella</h1>
-        <h2 class="z-20 text-5xl font-bold leading-tighter tracking-tighter mb-4 aos-init aos-animate">
+        <h1 class="z-20 text-8xl font-extrabold leading-tighter tracking-tighter mb-4 aos-init aos-animate text-white">Mister Paella</h1>
+        <h2 class="z-20 text-5xl font-bold leading-tighter tracking-tighter mb-4 aos-init aos-animate text-white">
           Haz una paella
             <div class="mt-4 flex flex-wrap gap-0 md:gap-4 items-center justify-center">
-                <span :class="{'opacity-20' : index !== 0}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Buena.</span>
-                <span :class="{'opacity-20' : index !== 1}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Fácil.</span>
-                <span :class="{'opacity-20' : index !== 2}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-teal-400">Exacta.</span>
+                <span :class="{'opacity-40' : index !== 0}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-white to-teal-400">Buena.</span>
+                <span :class="{'opacity-40' : index !== 1}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-white to-teal-400">Fácil.</span>
+                <span :class="{'opacity-40' : index !== 2}" class="transition-all ease-in-out delay-200 bg-clip-text text-transparent bg-gradient-to-r from-white to-teal-400">Exacta.</span>
             </div>
         </h2>
         <div class="z-20 max-w-3xl mx-auto">
-          <p class="text-xl mb-8 aos-init aos-animate text-muted-foreground">
+          <p class="text-xl mb-8 aos-init aos-animate text-muted-foreground text-gray-100">
             No pierdas ingredientes. No pierdas tiempo, introduce el número de comensales y deja de calcular a ojo
           </p>
           <div class="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center aos-init aos-animate">
