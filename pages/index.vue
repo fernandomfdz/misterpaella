@@ -24,8 +24,18 @@
     ogTitle: 'Mister Paella',
     description: 'Haz una paella. No pierdas ingredientes. No pierdas tiempo, introduce el número de comensales y deja de calcular a ojo',
     ogDescription: 'Haz una paella. No pierdas ingredientes. No pierdas tiempo, introduce el número de comensales y deja de calcular a ojo',
-    ogImage: '/opengraph-image.png',
-    twitterCard: '/opengraph-image.png',
+    ogImage: 'https://misterpaella.es/opengraph-image.png',
+    ogUrl: 'https://misterpaella.es',
+    ogSiteName: 'Mister Paella',
+    ogType: 'website',
+    ogImageType: 'image/png',
+    ogImageWidth: '1200',
+    ogImageHeight: '600',
+    twitterCreator: '@fernandomfdz',
+    twitterTitle: 'Mister Paella',
+    twitterImage: 'https://misterpaella.es/opengraph-image.png',
+    twitterDescription: 'Haz una paella. No pierdas ingredientes. No pierdas tiempo, introduce el número de comensales y deja de calcular a ojo',
+    twitterCard: 'summary_large_image',
   })
 
 </script>
