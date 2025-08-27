@@ -15,7 +15,7 @@
       { hid: 'twitter-card', property: 'twitter:card', content: '/opengraph-image.png' },
       { hid: 'og-title', property: 'og:title', content: 'Mister Paella'},
       { hid: 'og-type', property: 'og:type', content: 'website' },
-      { hid: 'og-image', property: 'og:image', content: '/opengraph-image.png'},
+      { hid: 'og-image', property: 'og:image', content: 'https://misterpaella.es/opengraph-image.png'},
     ]
   });
 
